@@ -10,5 +10,6 @@ return [
 	'login' => 'main/login',
 	'dashboard' => 'dashboard/index',
 	'dashboard/add' => 'dashboard/add',
+	'task/add' => 'dashboard/task',
 	'/' => 'main/index', 
 ];

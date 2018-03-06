@@ -3,7 +3,7 @@ body {
 	margin: auto;
 }
 
-#add-block, #edit-block, #delete-block {
+#add-block, #edit-block, #delete-block, #task {
 	display:  none;
 }
 

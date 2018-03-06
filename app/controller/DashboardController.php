@@ -1,10 +1,15 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/app/model/Dashboard.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/model/Task.php';
 class DashboardController extends ozarko\library\Controller {
 	public function indexAction() {
 		$this->di->check->access(true);
 		$dashboard = new Dashboard($this->di);
-		$dashboards = $dashboard->getName();
+		$dashboards = $dashboard->getAll();
+
+		$task = new Task($this->di);
+		$tasks = $task->getAll();
+
 		include ($_SERVER['DOCUMENT_ROOT'].'/app/view/dashboard/index.phtml');
 	}
 
@@ -21,6 +26,28 @@ class DashboardController extends ozarko\library\Controller {
 			$dashboard = new Dashboard($this->di);
 
 			if($dashboard->create($name)) {
+				header('Location: /dashboard');
+				exit;
+			}
+
+		}
+	}
+
+	public function taskAction() {
+		$this->di->check->access(true);
+		if (isset($_POST)) {
+			$desc = htmlspecialchars($_POST['desc']);
+			$dashid = htmlspecialchars($_POST['dashid']);
+			
+			if (empty($desc) || empty($dashid)) {
+				$_SESSION['error'] = "Таск не може бути пустим";
+				header('Location: /dashboard');
+				exit;
+			}
+
+			$task = new Task($this->di);
+
+			if($task->create($desc, $dashid)) {
 				header('Location: /dashboard');
 				exit;
 			}

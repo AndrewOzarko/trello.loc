@@ -16,10 +16,24 @@
 	
 	<?php foreach ($dashboards as $dboard) { ?>
 		<div class="dashboard">
-			<h4><?php echo $dboard['name'];?> <small> <a href="/dashboard/edit">edit</a></small> | <small> <a href="/dashboard/delete">delete</a></small></h4> 
-			<button>Add task</button>
+			<h4><?php echo $dboard['name'];?> <small> <a href="/dashboard/edit/<?=$dboard['id'];?>">edit</a></small> | <small> <a href="/dashboard/delete/<?=$dboard['id'];?>">delete</a></small></h4> 
+			<button class="add-task">Add task</button> <br>
+			<div id="task">
+				<form action="/task/add" method="post">
+					<input type="text" name="desc" placeholder="Task..."> <br>
+					<input type="hidden" name="dashid" value="<?=$dboard['id'];?>">
+					<button type="submit">Add</button>
+				</form>
+			</div>
+		
+		<?php foreach ($tasks as $taska) { ?>
+			<?php if($taska['dashboard_id'] == $dboard['id']) { ?>
+				<div class="task">
+					<h5><?php echo $taska['descr'];?></h4>
+				</div>
+			<?php } ?>
+		<?php } ?>
 		</div>
-
 <!-- 		<div id="edit-block">
 			<form action="/dashboard/edit" method="post">
 				<input type="text" name="name" placeholder="Enter new name task block">
@@ -37,17 +51,17 @@
 	window.onload = function () {
         $('.button-one').on('click', function () {
             $("#add-block").css("display", "block");
-            setTimeout(function () { $("#add-block").css("border", "display", "block") }, 1000);
+            setTimeout(function () { $("#add-block").css("display", "block") }, 1000);
         });
 
         $('.button-delete').on('click', function () {
             $("#delete-block").css("display", "block");
-            setTimeout(function () { $("#delete-block").css("border", "display", "block") }, 1000);
+            setTimeout(function () { $("#delete-block").css("display", "block") }, 1000);
         });
 
-        $('.button-edit').on('click', function () {
-            $("#edit-block").css("display", "block");
-            setTimeout(function () { $("#edit-block").css("border", "display", "block") }, 1000);
+        $('.add-task').on('click', function () {
+            $("#task").css("display", "block");
+            setTimeout(function () { $("#task").css("display", "block") }, 1000);
         });
     }
 </script>

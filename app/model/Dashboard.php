@@ -7,7 +7,7 @@
 			return $stmt->execute();
 		}
 
-		public function getName() {
-			return $this->db::run("SELECT name FROM Dashboard");
+		public function getAll() {
+			return $this->db::run("SELECT * FROM Dashboard");
 		}
 	}
