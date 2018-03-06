@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/css/style.css">
+	<title>Trello.loc</title>
+</head>
+<body>
+	<?php echo isset($_SESSION['error']) ? '<small>'.$_SESSION['error'].'</small>' : null;?>
+<?php if (isset($_SESSION['error'])) { $_SESSION['error'] = null; } ?>

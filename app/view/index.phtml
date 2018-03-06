@@ -1,0 +1,13 @@
+<?php include ('head.phtml'); ?>
+<h1>Registration</h1>
+	<form action="/registration" method="post">
+		<input type="text" name="name" placeholder="Name"> <br> <br>
+		<input type="text" name="email" placeholder="E-mail"> <br> <br>
+		<input type="password" name="password" placeholder="Password"> <br> <br>
+		<input type="password" name="passrep" placeholder="Repeat password"> <br> <br>
+		<button type="sumbit">Register</button>
+	</form>
+
+	<br>
+	<a href="/login">Авторизація</a>
+<?php include ('foot.phtml'); ?>
