@@ -25,4 +25,3 @@
 			return DB::run("UPDATE User SET sess=? WHERE email=?", [$sess, $email]);
 		}
 	}
-?>

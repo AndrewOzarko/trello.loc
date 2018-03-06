@@ -1,0 +1,55 @@
+<?php include ($_SERVER['DOCUMENT_ROOT'].'/app/view/head.phtml'); ?>
+
+<h1>Dashboard</h1>
+<br> <br>
+<div>
+	<button class="button-one" type="submit">Create new task block</button>
+
+	<br> <br>
+		<div id="add-block">
+			<form action="/dashboard/add" method="post">
+				<input type="text" name="name" placeholder="Enter name task block">
+				<button type="submit">Add</button>
+			</form>
+		</div>
+	</div>
+	
+	<?php foreach ($dashboards as $dboard) { ?>
+		<div class="dashboard">
+			<h4><?php echo $dboard['name'];?> <small> <a href="/dashboard/edit">edit</a></small> | <small> <a href="/dashboard/delete">delete</a></small></h4> 
+			<button>Add task</button>
+		</div>
+
+<!-- 		<div id="edit-block">
+			<form action="/dashboard/edit" method="post">
+				<input type="text" name="name" placeholder="Enter new name task block">
+				<button type="submit">Edit</button>
+			</form>
+		</div>
+		<div id="delete-block">
+			<form action="/dashboard/delete" method="post">
+				<label for="">Are you really want delete this block ?</label>
+				<button type="submit">Add</button>
+			</form>
+		</div> -->
+	<?php } ?>
+<script>
+	window.onload = function () {
+        $('.button-one').on('click', function () {
+            $("#add-block").css("display", "block");
+            setTimeout(function () { $("#add-block").css("border", "display", "block") }, 1000);
+        });
+
+        $('.button-delete').on('click', function () {
+            $("#delete-block").css("display", "block");
+            setTimeout(function () { $("#delete-block").css("border", "display", "block") }, 1000);
+        });
+
+        $('.button-edit').on('click', function () {
+            $("#edit-block").css("display", "block");
+            setTimeout(function () { $("#edit-block").css("border", "display", "block") }, 1000);
+        });
+    }
+</script>
+
+<?php include ($_SERVER['DOCUMENT_ROOT'].'/app/view/foot.phtml'); ?>

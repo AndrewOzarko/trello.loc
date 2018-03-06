@@ -30,7 +30,7 @@ class CheckSession {
 	public function access($access) {
 		if(isset($this->user) && $access == false) {
 			$_SESSION['error'] = "Ви вже авторизавані";
-			header("Location: /cabinet");
+			header("Location: /dashboard");
 			exit();
 		}
 		if(!isset($this->user) && $access == true) {

@@ -33,7 +33,7 @@ class RegistrationController extends ozarko\library\Controller {
 
 			if ($user->create($name, md5($password), $email, md5($password.$email.time()))) {
 				setcookie("sess", md5($password.$email.time()), time()+3600); 
-				header('Location: /cabinet');
+				header('Location: /dashboard');
 				exit;
 			} 
 
@@ -62,11 +62,11 @@ class RegistrationController extends ozarko\library\Controller {
 			}
 
 			$aut = $user->getByEmail($email);
-			
+
 			if($aut['email'] == $email && $aut['password'] == md5($password)) {
 				if($user->updateSess(md5($password.$email.time()), $email)) {
 					setcookie("sess", md5($password.$email.time()), time()+3600); 
-					header('Location: /cabinet');
+					header('Location: /dashboard');
 					exit;
 				}
 			}

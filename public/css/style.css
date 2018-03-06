@@ -2,3 +2,14 @@ body {
 	max-width: 800px;
 	margin: auto;
 }
+
+#add-block, #edit-block, #delete-block {
+	display:  none;
+}
+
+.dashboard {
+	background: #ccc;
+	display: inline-block;
+	width: 300px;
+	margin: 5px;
+}
